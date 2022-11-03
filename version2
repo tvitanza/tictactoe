@@ -1,0 +1,104 @@
+package com.example.lesson5;
+
+import javafx.application.Application;
+import javafx.event.Event;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+public class TicTacToeAmeliore extends Application {
+    @Override
+    public void start(Stage stage) {
+        Canvas canvas = new Canvas(600, 600);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.color(0, 0, 0.1));
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        gc.setStroke(Color.WHITE);
+        gc.strokeLine(canvas.getWidth()/3, 0, canvas.getWidth()/3, canvas.getHeight());
+        gc.strokeLine(canvas.getWidth()/3*2, 0, canvas.getWidth()/3*2, canvas.getHeight());
+        gc.strokeLine(0, canvas.getHeight()/3, canvas.getWidth(), canvas.getHeight()/3);
+        gc.strokeLine(0, canvas.getHeight()/3*2, canvas.getWidth(), canvas.getHeight()/3*2);
+
+        canvas.setOnMouseClicked(mouseEvent -> {
+            int numClicks = mouseEvent.getClickCount();
+            System.out.println(numClicks);
+            gc.setFill(Color.WHITE);
+
+            if (mouseEvent.getX() < canvas.getWidth() / 3 && mouseEvent.getY() < canvas.getHeight() / 3) {
+                if (numClicks % 2 == 0) {
+                    gc.fillOval(canvas.getWidth() / 10, canvas.getHeight() / 10, 80, 80);
+                } else {
+                    gc.fillRect(canvas.getWidth() / 10, canvas.getHeight() / 10, 80, 80);
+                }
+
+            } else if (mouseEvent.getX() < canvas.getWidth() / 3 * 2 && mouseEvent.getY() < canvas.getHeight() / 3) {
+                if (numClicks % 2 == 0) {
+                    gc.fillOval(canvas.getWidth() / 10 + 200, canvas.getHeight() / 10, 80, 80);
+                } else {
+                    gc.fillRect(canvas.getWidth() / 10 + 200, canvas.getHeight() / 10, 80, 80);
+                }
+
+            } else if (mouseEvent.getX() < canvas.getWidth() / 3 * 3 && mouseEvent.getY() < canvas.getHeight() / 3) {
+                if (numClicks % 2 == 0) {
+                    gc.fillOval(canvas.getWidth() / 10 + 400, canvas.getHeight() / 10, 80, 80);
+                } else {
+                    gc.fillRect(canvas.getWidth() / 10 + 400, canvas.getHeight() / 10, 80, 80);
+                }
+
+            } else if (mouseEvent.getX() < canvas.getWidth() / 3 && mouseEvent.getY() < (canvas.getHeight() / 3) * 2 && mouseEvent.getY() > canvas.getHeight() / 3) {
+                if (numClicks % 2 == 0) {
+                    gc.fillOval(canvas.getWidth() / 10, canvas.getHeight() / 10 + 200, 80, 80);
+                } else {
+                    gc.fillRect(canvas.getWidth() / 10, canvas.getHeight() / 10 + 200, 80, 80);
+                }
+
+            } else if (mouseEvent.getX() < canvas.getWidth() / 3 * 2 && mouseEvent.getY() < (canvas.getHeight() / 3) * 2 && mouseEvent.getY() > canvas.getHeight() / 3) {
+                if (numClicks % 2 == 0) {
+                    gc.fillOval(canvas.getWidth() / 10 + 200, canvas.getHeight() / 10 + 200, 80, 80);
+                } else {
+                    gc.fillRect(canvas.getWidth() / 10 + 200, canvas.getHeight() / 10 + 200, 80, 80);
+                }
+
+            } else if (mouseEvent.getX() < canvas.getWidth() / 3 * 3 && mouseEvent.getY() < (canvas.getHeight() / 3) * 2 && mouseEvent.getY() > canvas.getHeight() / 3) {
+                if (numClicks % 2 == 0) {
+                    gc.fillOval(canvas.getWidth() / 10 + 400, canvas.getHeight() / 10 + 200, 80, 80);
+                } else {
+                    gc.fillRect(canvas.getWidth() / 10 + 400, canvas.getHeight() / 10 + 200, 80, 80);
+                }
+
+            } else if (mouseEvent.getX() < canvas.getWidth() / 3 && mouseEvent.getY() < canvas.getHeight() && mouseEvent.getY() > (canvas.getHeight() / 3) * 2) {
+                if (numClicks % 2 == 0) {
+                    gc.fillOval(canvas.getWidth() / 10, canvas.getHeight() / 10 + 400, 80, 80);
+                } else {
+                    gc.fillRect(canvas.getWidth() / 10, canvas.getHeight() / 10 + 400, 80, 80);
+                }
+
+            } else if (mouseEvent.getX() < canvas.getWidth() / 3 * 2 && mouseEvent.getY() < canvas.getHeight() && mouseEvent.getY() > (canvas.getHeight() / 3) * 2) {
+                if (numClicks % 2 == 0) {
+                    gc.fillOval(canvas.getWidth() / 10 + 200, canvas.getHeight() / 10 + 400, 80, 80);
+                } else {
+                    gc.fillRect(canvas.getWidth() / 10 + 200, canvas.getHeight() / 10 + 400, 80, 80);
+                }
+
+            } else if (mouseEvent.getX() < canvas.getWidth() / 3 * 3 && mouseEvent.getY() < canvas.getHeight() && mouseEvent.getY() > (canvas.getHeight() / 3) * 2) {
+                if (numClicks % 2 == 0) {
+                    gc.fillOval(canvas.getWidth() / 10 + 400, canvas.getHeight() / 10 + 400, 80, 80);
+                } else {
+                    gc.fillRect(canvas.getWidth() / 10 + 400, canvas.getHeight() / 10 + 400, 80, 80);
+                }
+            }
+        });
+
+        stage.setScene(new Scene(new VBox(canvas)));
+        stage.setTitle("Tic tac toe");
+        stage.show();
+    }
+}
+
+
+
+
+
